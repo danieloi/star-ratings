@@ -1,0 +1,43 @@
+.checked {
+  color: #ffcd69;
+}
+
+.f-44 {
+  font-size: 44px;
+}
+
+.h2-5 {
+  height: 3rem;
+}
+
+.custom-pr3-5 {
+  padding-right: 1.5rem;
+}
+
+.custom-gray-btn {
+  color: #797874;
+}
+
+.custom-bg-gray {
+  background-color: #b9b9b9;
+}
+
+.custom-h1 {
+  height: 1px;
+}
+
+.container {
+  max-width: 585px;
+}
+
+i {
+  color: #e0e0e0;
+}
+
+.custom-gray {
+  color: #858585;
+}
+
+.custom-gray-input::placeholder {
+  color: #929292;
+}

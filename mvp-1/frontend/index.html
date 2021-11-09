@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link href="./reset.css" rel="stylesheet" />
+    <link href="./style.css" rel="stylesheet" />
+
+    <!-- <link
+      href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css"
+      rel="stylesheet"
+    /> -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/tachyons@4.12.0/css/tachyons.min.css"
+    />
+
+    <script
+      src="https://kit.fontawesome.com/fc12db6c5c.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="measure-wide center min-vh-100">
+      <h1 id="title" class="fw7 f2 pt5 pb2 mt0">The Minimalist Entrepreneur</h1>
+      <div class="flex justify-between mb4">
+        <div class="flex items-center">
+          <h2 class="f2 pr3" id="rating">0.0</h2>
+          <div id="hero-star-rating">
+            <i class="fas fa-lg fa-star"></i>
+            <i class="fas fa-lg fa-star"></i>
+            <i class="fas fa-lg fa-star"></i>
+            <i class="fas fa-lg fa-star"></i>
+            <i class="fas fa-lg fa-star"></i>
+          </div>
+        </div>
+        <button
+          class="
+            bg-white
+            b--moon-gray
+            helvetica
+            fw7
+            ph3
+            pv3
+            br2
+            custom-gray-btn
+            ba
+            pointer
+          "
+          id="openBtn"
+        >
+          Add review
+        </button>
+      </div>
+      <div class="custom-h1 custom-bg-gray w-100"></div>
+      <div>
+        <h2 class="fw7 pt4 mb4 f3">Reviews</h2>
+        <div class="flex mb4">
+          <div class="pr3">
+            <i class="fas fa-lg fa-star checked"></i>
+            <i class="fas fa-lg fa-star checked"></i>
+            <i class="fas fa-lg fa-star checked"></i>
+            <i class="fas fa-lg fa-star checked"></i>
+            <i class="fas fa-lg fa-star"></i>
+          </div>
+          <div>
+            <p class="custom-gray">
+              <span class="fw7 black">4.</span> book was full of fluff
+            </p>
+          </div>
+        </div>
+        <div class="flex mb4">
+          <div class="pr3">
+            <i class="fas fa-lg fa-star checked"></i>
+            <i class="fas fa-lg fa-star checked"></i>
+            <i class="fas fa-lg fa-star checked"></i>
+            <i class="fas fa-lg fa-star"></i>
+            <i class="fas fa-lg fa-star"></i>
+          </div>
+          <div>
+            <p class="custom-gray">
+              <span class="fw7 black">3.</span> book was fluff
+            </p>
+          </div>
+        </div>
+        <div class="flex mb4">
+          <div class="pr3">
+            <i class="fas fa-lg fa-star checked"></i>
+            <i class="fas fa-lg fa-star checked"></i>
+            <i class="fas fa-lg fa-star checked"></i>
+            <i class="fas fa-lg fa-star checked"></i>
+            <i class="fas fa-lg fa-star"></i>
+          </div>
+          <div>
+            <p class="custom-gray">
+              <span class="fw7 black">4.</span> book was amazing
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="
+        fixed
+        left-0
+        top-0
+        right-0
+        bottom-0
+        min-vh-100
+        overflow-auto
+        bg-black-40
+        dn
+      "
+      id="modal-bg"
+    >
+      <div class="bg-white br4 measure-wide center mt7 ph4 pv4" id="modal">
+        <div class="ma3">
+          <h2 id="title" class="fw7 f2 pb4 mt0">What's your rating?</h2>
+          <h3 class="f3 pb4 mt0">Rating</h3>
+          <div class="pr3 pb4" id="form-star-parent">
+            <button
+              class="b--none bg-white pa0 pointer"
+              value="1"
+              id="form-star-1"
+              onclick="setFormRating(1)"
+            >
+              <i class="fas fa-lg fa-star"></i>
+            </button>
+            <button
+              class="b--none bg-white pa0 pointer"
+              value="2"
+              id="form-star-2"
+              onclick="setFormRating(2)"
+            >
+              <i class="fas fa-lg fa-star"></i>
+            </button>
+            <button
+              class="b--none bg-white pa0 pointer"
+              value="3"
+              id="form-star-3"
+              onclick="setFormRating(3)"
+            >
+              <i class="fas fa-lg fa-star"></i>
+            </button>
+            <button
+              class="b--none bg-white pa0 pointer"
+              value="4"
+              id="form-star-4"
+              onclick="setFormRating(4)"
+            >
+              <i class="fas fa-lg fa-star"></i>
+            </button>
+            <button
+              class="b--none bg-white pa0 pointer"
+              value="5"
+              id="form-star-5"
+              onclick="setFormRating(5)"
+            >
+              <i class="fas fa-lg fa-star"></i>
+            </button>
+          </div>
+          <h3 class="f3 pb4 mt0">Review</h3>
+          <input
+            type="text"
+            id="review"
+            class="db pb4 custom-gray-input"
+            placeholder="Start typing..."
+            required
+            aria-required="true"
+            onchange="setFormReview()"
+          />
+          <button
+            class="
+              bg-white
+              b--moon-gray
+              helvetica
+              fw7
+              ph4
+              pv3
+              br2
+              custom-gray-btn
+              ba
+              pointer
+            "
+            id="submitBtn"
+            onclick="postReview()"
+          >
+            Submit review
+          </button>
+        </div>
+      </div>
+    </div>
+    <script src="./script.js"></script>
+  </body>
+</html>
