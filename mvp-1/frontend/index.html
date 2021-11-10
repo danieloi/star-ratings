@@ -62,48 +62,7 @@
       <div class="custom-h1 custom-bg-gray w-100"></div>
       <div>
         <h2 class="fw7 pt4 mb4 f3">Reviews</h2>
-        <div class="flex mb4">
-          <div class="pr3">
-            <i class="fas fa-lg fa-star checked"></i>
-            <i class="fas fa-lg fa-star checked"></i>
-            <i class="fas fa-lg fa-star checked"></i>
-            <i class="fas fa-lg fa-star checked"></i>
-            <i class="fas fa-lg fa-star"></i>
-          </div>
-          <div>
-            <p class="custom-gray">
-              <span class="fw7 black">4.</span> book was full of fluff
-            </p>
-          </div>
-        </div>
-        <div class="flex mb4">
-          <div class="pr3">
-            <i class="fas fa-lg fa-star checked"></i>
-            <i class="fas fa-lg fa-star checked"></i>
-            <i class="fas fa-lg fa-star checked"></i>
-            <i class="fas fa-lg fa-star"></i>
-            <i class="fas fa-lg fa-star"></i>
-          </div>
-          <div>
-            <p class="custom-gray">
-              <span class="fw7 black">3.</span> book was fluff
-            </p>
-          </div>
-        </div>
-        <div class="flex mb4">
-          <div class="pr3">
-            <i class="fas fa-lg fa-star checked"></i>
-            <i class="fas fa-lg fa-star checked"></i>
-            <i class="fas fa-lg fa-star checked"></i>
-            <i class="fas fa-lg fa-star checked"></i>
-            <i class="fas fa-lg fa-star"></i>
-          </div>
-          <div>
-            <p class="custom-gray">
-              <span class="fw7 black">4.</span> book was amazing
-            </p>
-          </div>
-        </div>
+        <div id="reviews-list"></div>
       </div>
     </div>
     <div
@@ -174,23 +133,13 @@
             placeholder="Start typing..."
             required
             aria-required="true"
-            onchange="setFormReview()"
+            oninput="setFormInput"
           />
           <button
-            class="
-              bg-white
-              b--moon-gray
-              helvetica
-              fw7
-              ph4
-              pv3
-              br2
-              custom-gray-btn
-              ba
-              pointer
-            "
+            class="bg-white b--moon-gray helvetica fw7 ph4 pv3 br2 ba pointer"
             id="submitBtn"
             onclick="postReview()"
+            disabled
           >
             Submit review
           </button>

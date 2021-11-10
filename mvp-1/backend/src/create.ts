@@ -6,6 +6,7 @@ import { APIGatewayProxyEventV2 } from "aws-lambda";
 
 export const main = handler(async (event: APIGatewayProxyEventV2) => {
   // Request body is passed in as a JSON encoded string in 'event.body'
+
   const data = JSON.parse(event.body!);
 
   const newReviewId = uuid.v1();
@@ -32,22 +33,9 @@ export const main = handler(async (event: APIGatewayProxyEventV2) => {
             SK: "tally",
           },
           UpdateExpression:
-            "SET numOfReviews = numOfReviews + :numOfReviewsDelta",
+            "SET numOfReviews = numOfReviews + :numOfReviewsDelta, sumOfRatings = sumOfRatings + :sumOfRatingsDelta",
           ExpressionAttributeValues: {
             ":numOfReviewsDelta": 1,
-          },
-        },
-      },
-      {
-        Update: {
-          TableName: process.env.REVIEWS_TABLE_NAME!,
-          Key: {
-            PK: "tally",
-            SK: "tally",
-          },
-          UpdateExpression:
-            "SET sumOfRatings = sumOfRatings + :sumOfRatingsDelta",
-          ExpressionAttributeValues: {
             ":sumOfRatingsDelta": data.rating,
           },
         },
