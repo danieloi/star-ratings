@@ -58,7 +58,7 @@ export default class MyStack extends sst.Stack {
                 PutRequest: {
                   Item: {
                     PK: { S: "reviews" },
-                    SK: { S: "review#0" },
+                    SK: { S: "review#16368441" },
                     rating: { N: "4" },
                     review: { S: "book was amazing" },
                   },
@@ -68,7 +68,7 @@ export default class MyStack extends sst.Stack {
                 PutRequest: {
                   Item: {
                     PK: { S: "reviews" },
-                    SK: { S: "review#1" },
+                    SK: { S: "review#163684410" },
                     rating: { N: "3" },
                     review: { S: "book was fluff" },
                   },
@@ -78,7 +78,7 @@ export default class MyStack extends sst.Stack {
                 PutRequest: {
                   Item: {
                     PK: { S: "reviews" },
-                    SK: { S: "review#2" },
+                    SK: { S: "review#1636844100" },
                     rating: { N: "4" },
                     review: { S: "book was full of fluff" },
                   },

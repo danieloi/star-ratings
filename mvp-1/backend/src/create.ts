@@ -1,5 +1,4 @@
 import * as AWS from "aws-sdk";
-import * as uuid from "uuid";
 import handler from "./util/handler";
 import dynamoDb from "./util/dynamoDb";
 import { APIGatewayProxyEventV2 } from "aws-lambda";
@@ -9,10 +8,9 @@ export const main = handler(async (event: APIGatewayProxyEventV2) => {
 
   const data = JSON.parse(event.body!);
 
-  const newReviewId = uuid.v1();
   const newItem = {
     PK: `reviews`,
-    SK: `review#${newReviewId}`,
+    SK: `review#${new Date().getTime()}`,
     rating: data.rating,
     review: data.review,
   };
