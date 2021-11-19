@@ -42,14 +42,6 @@ i {
   color: #929292;
 }
 
-.mw4-5 {
-  max-width: 12rem;
-}
-
-.w4-75 {
-  width: 14rem;
-}
-
 .flex-noshrink {
   flex-shrink: 0;
 }

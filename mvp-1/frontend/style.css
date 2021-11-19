@@ -41,3 +41,7 @@ i {
 .custom-gray-input::placeholder {
   color: #929292;
 }
+
+.flex-noshrink {
+  flex-shrink: 0;
+}

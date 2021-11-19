@@ -7,10 +7,6 @@
     <link href="./reset.css" rel="stylesheet" />
     <link href="./style.css" rel="stylesheet" />
 
-    <!-- <link
-      href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css"
-      rel="stylesheet"
-    /> -->
     <link
       rel="stylesheet"
       href="https://unpkg.com/tachyons@4.12.0/css/tachyons.min.css"
@@ -28,11 +24,13 @@
     />
   </head>
   <body>
-    <div class="measure-wide center min-vh-100">
-      <h1 id="title" class="fw7 f2 pt5 pb2 mt0">The Minimalist Entrepreneur</h1>
-      <div class="flex justify-between mb4">
-        <div class="flex items-center">
-          <h2 class="f2 pr3" id="rating">0.0</h2>
+    <div class="measure-wide center min-vh-100 ph3 ph0-ns">
+      <h1 id="title" class="fw7 f3 f2-ns pt5 pb3 mt0 mb0 mb3-ns">
+        The Minimalist Entrepreneur
+      </h1>
+      <div class="flex justify-between mb4 flex-wrap">
+        <div class="flex items-center pv3 pv0-ns">
+          <h2 class="f3 f2-ns pr3" id="rating">0.0</h2>
           <div id="hero-star-rating">
             <i class="fas fa-lg fa-star"></i>
             <i class="fas fa-lg fa-star"></i>
@@ -76,10 +74,14 @@
         overflow-auto
         bg-black-40
         dn
+        justify-center
+        items-center
+        pa3
+        pa0-ns
       "
       id="modal-bg"
     >
-      <div class="bg-white br4 measure-wide center mt7 ph4 pv4" id="modal">
+      <div class="bg-white br4 measure-wide center mb4 mb6-l pa4" id="modal">
         <div class="ma3">
           <h2 id="title" class="fw7 f2 pb4 mt0">What's your rating?</h2>
           <h3 class="f3 pb4 mt0">Rating</h3>

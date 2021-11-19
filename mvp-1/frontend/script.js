@@ -6,6 +6,7 @@ var openBtn = document.getElementById("openBtn");
 
 openBtn.onclick = function () {
   modalBg.classList.remove("dn");
+  modalBg.classList.add("flex");
   toggleSubmitBtnEnabled();
 };
 
@@ -15,6 +16,7 @@ modalBg.onclick = closeModal;
 
 function closeModal() {
   modalBg.classList.add("dn");
+  modalBg.classList.remove("flex");
   resetFormRating();
   resetReviewInputField();
   toggleSubmitBtnEnabled();
@@ -150,15 +152,12 @@ function generateReviewsArray(reviews) {
     textBoldener.innerText = `${review.rating}.`;
 
     const text = document.createElement("p");
-    text.classList.add("custom-gray");
+    text.classList.add("custom-gray", "truncate");
     text.appendChild(textBoldener);
     text.append(` ${review.review}`);
 
-    const commentWrapper = document.createElement("div");
-    commentWrapper.appendChild(text);
-
     const starsWrapper = document.createElement("div");
-    starsWrapper.classList.add("pr3");
+    starsWrapper.classList.add("pr3", "flex-noshrink");
     generateStarsArray(review.rating).forEach((star) => {
       starsWrapper.appendChild(star);
     });
@@ -166,7 +165,7 @@ function generateReviewsArray(reviews) {
     const wrapper = document.createElement("div");
     wrapper.classList.add("flex", "mb4");
     wrapper.appendChild(starsWrapper);
-    wrapper.appendChild(commentWrapper);
+    wrapper.appendChild(text);
 
     return wrapper;
   });
