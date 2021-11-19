@@ -1,21 +1,28 @@
 import React from "react";
+import { renderCheckedOrUnCheckedStar, renderHalfOrFullStar } from "../utils";
 
 type Props = {
   rating: string;
 };
 
+function roundToNearestHalf(num: number) {
+  return Math.round(num * 2) / 2;
+}
+
 export default function StarRating({ rating }: Props) {
-  const significantStarRating = parseFloat(parseFloat(rating).toFixed());
+  const ratingToNearestHalf = roundToNearestHalf(parseFloat(rating));
 
   return (
     <div>
-      {Array.from(Array(5)).map((_, index) => {
-        if (index + 1 <= significantStarRating) {
-          return <i className="fas fa-lg fa-star pr1 checked" key={index} />;
-        } else {
-          return <i className="fas fa-lg fa-star pr1 " key={index} />;
-        }
-      })}
+      {Array.from(Array(5)).map((_, index) => (
+        <i
+          key={index}
+          className={`w2 fas fa-lg ${renderHalfOrFullStar(
+            index,
+            ratingToNearestHalf
+          )} ${renderCheckedOrUnCheckedStar(index, ratingToNearestHalf)}`}
+        />
+      ))}
     </div>
   );
 }
