@@ -98,12 +98,12 @@ function removeAllChildNodes(parent) {
   }
 }
 
+const API_URL = "https://ez7slnv65l.execute-api.us-east-1.amazonaws.com";
+
 async function loadData() {
   const [reviewsResp, averagesResp] = await Promise.all([
-    fetch("https://ez7slnv65l.execute-api.us-east-1.amazonaws.com/reviews"),
-    fetch(
-      "https://ez7slnv65l.execute-api.us-east-1.amazonaws.com/reviews/average"
-    ),
+    fetch(`${API_URL}/reviews`),
+    fetch(`${API_URL}/reviews/average`),
   ]);
 
   const reviews = await reviewsResp.json();
@@ -191,16 +191,13 @@ function toggleSubmitBtnLoading() {
 async function postReview() {
   toggleSubmitBtnLoading();
   try {
-    await fetch(
-      "https://ez7slnv65l.execute-api.us-east-1.amazonaws.com/reviews",
-      {
-        method: "POST",
-        body: JSON.stringify({
-          rating: userRating,
-          review: userReview,
-        }),
-      }
-    );
+    await fetch(`${API_URL}/reviews`, {
+      method: "POST",
+      body: JSON.stringify({
+        rating: userRating,
+        review: userReview,
+      }),
+    });
 
     await loadData();
     toggleSubmitBtnLoading();
