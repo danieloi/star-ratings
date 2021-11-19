@@ -51,7 +51,7 @@ export default function AddReviewForm({ toggleIsDialogOpen }: Props) {
 
   return (
     <div className="ma3">
-      <h2 id="title" className="fw7 f2 pb4 mt0">
+      <h2 id="title" className="fw7 f3 f2-ns pb4 mt0">
         What's your rating?
       </h2>
       <h3 className="f3 pb4 mt0">Rating</h3>
