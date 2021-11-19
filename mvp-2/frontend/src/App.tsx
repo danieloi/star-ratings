@@ -50,11 +50,13 @@ function App() {
   }, [loadData]);
 
   return (
-    <div className="measure center min-vh-100">
-      <h1 className="fw7 f2 pt5 pb3 mt0 mb3">The Minimalist Entrepreneur</h1>
-      <div className="flex justify-between mb4">
-        <div className="flex items-center">
-          <h2 className="f2 pr3" id="rating">
+    <div className="measure center min-vh-100 ph3 ph0-ns">
+      <h1 className="fw7 f3 f2-ns pt5 pb3 mt0 mb0 mb3-ns">
+        The Minimalist Entrepreneur
+      </h1>
+      <div className="flex justify-between mb4 flex-wrap">
+        <div className="flex items-center pv3 pv0-ns">
+          <h2 className="f3 f2-ns pr3" id="rating">
             {state.average}
           </h2>
           <StarRating rating={state.average} />

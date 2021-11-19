@@ -4,7 +4,7 @@ import AddReviewDialog from "./AddReviewDialog";
 import AddReviewForm from "./AddReviewForm";
 
 const className =
-  "bg-white b--moon-gray helvetica fw7 ph3 pv3 br2 custom-gray-btn ba pointer";
+  "bg-white b--moon-gray helvetica fw7 pa3 br2 custom-gray-btn ba pointer ";
 
 export default function AddReviewButton() {
   const { state: isDialogOpen, toggleState: toggleIsDialogOpen } = useToggle();
