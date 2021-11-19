@@ -11,6 +11,7 @@ export const main = handler(async (event: APIGatewayProxyEventV2) => {
       ":reviews": "reviews",
     },
     ProjectionExpression: "SK, rating, review",
+    ScanIndexForward: false,
   };
 
   const result = await dynamoDb.query(params);
