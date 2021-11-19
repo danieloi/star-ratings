@@ -5,7 +5,7 @@ import { APIGatewayProxyEventV2 } from "aws-lambda";
 
 export const main = handler(async (event: APIGatewayProxyEventV2) => {
   const params: AWS.DynamoDB.DocumentClient.QueryInput = {
-    TableName: process.env.REVIEWS_TABLE_NAME!,
+    TableName: process.env.reviewsTableName!,
     KeyConditionExpression: "PK = :tally",
     ExpressionAttributeValues: {
       ":tally": "tally",

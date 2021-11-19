@@ -19,13 +19,13 @@ export const main = handler(async (event: APIGatewayProxyEventV2) => {
     TransactItems: [
       {
         Put: {
-          TableName: process.env.REVIEWS_TABLE_NAME!,
+          TableName: process.env.reviewsTableName!,
           Item: newItem,
         },
       },
       {
         Update: {
-          TableName: process.env.REVIEWS_TABLE_NAME!,
+          TableName: process.env.reviewsTableName!,
           Key: {
             PK: "tally",
             SK: "tally",

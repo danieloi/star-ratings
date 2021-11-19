@@ -1,14 +1,37 @@
 import * as sst from "@serverless-stack/resources";
 import * as cr from "@aws-cdk/custom-resources";
-
+import { StreamViewType } from "@aws-cdk/aws-dynamodb";
 export default class MyStack extends sst.Stack {
   reviewsTable: sst.Table;
+  connectionsTable: sst.Table;
   api: sst.Api;
+  socketApi: sst.WebSocketApi;
 
   constructor(scope: sst.App, id: string, props?: sst.StackProps) {
     super(scope, id, props);
     // Create the DynamoDB tables
-    this.reviewsTable = new sst.Table(this, "reviews-1", {
+
+    this.connectionsTable = new sst.Table(this, "connections-2", {
+      fields: {
+        PK: sst.TableFieldType.STRING,
+      },
+      primaryIndex: { partitionKey: "PK", sortKey: "SK" },
+    });
+
+    this.socketApi = new sst.WebSocketApi(this, "SocketApi", {
+      defaultFunctionProps: {
+        timeout: 20,
+        environment: {
+          connectionsTableName: this.connectionsTable.tableName,
+        },
+      },
+      routes: {
+        $connect: "src/connect.main",
+        $disconnect: "src/disconnect.main",
+      },
+    });
+
+    this.reviewsTable = new sst.Table(this, "reviews-2", {
       fields: {
         PK: sst.TableFieldType.STRING,
         /**
@@ -28,9 +51,21 @@ export default class MyStack extends sst.Stack {
         sumOfRatings: sst.TableFieldType.NUMBER,
       },
       primaryIndex: { partitionKey: "PK", sortKey: "SK" },
+      stream: StreamViewType.NEW_IMAGE,
+      defaultFunctionProps: {
+        timeout: 20,
+        environment: {
+          connectionsTableName: this.connectionsTable.tableName,
+          socketApiUrl: this.socketApi.url,
+        },
+        permissions: [this.connectionsTable, this.socketApi],
+      },
+      consumers: {
+        socket: "src/broadcast.main",
+      },
     });
 
-    // Seed table with data
+    // Seed reviews table with data
     new cr.AwsCustomResource(this, "initTable", {
       onCreate: {
         service: "DynamoDB",
@@ -101,25 +136,24 @@ export default class MyStack extends sst.Stack {
       defaultFunctionProps: {
         timeout: 20,
         environment: {
-          REVIEWS_TABLE_NAME: this.reviewsTable.tableName,
+          reviewsTableName: this.reviewsTable.tableName,
         },
       },
       routes: {
         "GET /reviews": "src/list.main",
         "GET /reviews/average": "src/get.main",
         "POST /reviews": "src/create.main",
-        $connect: "src/connect.main",
-        $disconnect: "src/disconnect.main",
-        sendmessage: "src/sendMessage.main",
       },
     });
 
-    // Allow the API to access the table
+    // Allow the APIs to access the table
     this.api.attachPermissions([this.reviewsTable]);
+    this.socketApi.attachPermissions([this.connectionsTable]);
 
     // Show the endpoint in the output
     this.addOutputs({
       ApiEndpoint: this.api.url,
+      SocketEndpoint: this.socketApi.url,
     });
   }
 }

@@ -15,6 +15,7 @@
     "@types/uuid": "^8.3.1"
   },
   "dependencies": {
+    "@aws-cdk/aws-dynamodb": "1.126.0",
     "@aws-cdk/core": "1.126.0",
     "@aws-cdk/custom-resources": "1.126.0",
     "@serverless-stack/cli": "0.50.3",

@@ -8,7 +8,7 @@ type Props = {
   toggleIsDialogOpen: () => void;
 };
 
-const URL = "https://ez7slnv65l.execute-api.us-east-1.amazonaws.com/reviews";
+const URL = `${process.env.REACT_APP_URL}/reviews`;
 
 export default function AddReviewForm({ toggleIsDialogOpen }: Props) {
   const [rating, setRating] = useState(0);
