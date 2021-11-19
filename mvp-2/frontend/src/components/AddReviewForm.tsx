@@ -10,6 +10,16 @@ type Props = {
 
 const URL = `${process.env.REACT_APP_URL}/reviews`;
 
+function updateRating(formerRating, clickedRating) {
+  if (Math.ceil(formerRating) === clickedRating) {
+    if (formerRating === clickedRating) {
+      return clickedRating - 0.5;
+    }
+    return clickedRating;
+  }
+  return clickedRating - 0.5;
+}
+
 export default function AddReviewForm({ toggleIsDialogOpen }: Props) {
   const [rating, setRating] = useState(0);
   const [review, setReview] = useState("");
@@ -32,6 +42,11 @@ export default function AddReviewForm({ toggleIsDialogOpen }: Props) {
     }
   };
 
+  const handleRatingChange = (clickedRating) => {
+    const newRating = updateRating(rating, clickedRating);
+    setRating(newRating);
+  };
+
   const isDisabled = !rating || !review || isSubmitting;
 
   return (
@@ -41,7 +56,10 @@ export default function AddReviewForm({ toggleIsDialogOpen }: Props) {
       </h2>
       <h3 className="f3 pb4 mt0">Rating</h3>
       <div className="pr3 pb4">
-        <StarRatingInput rating={rating} handleRatingChange={setRating} />
+        <StarRatingInput
+          rating={rating}
+          handleRatingChange={handleRatingChange}
+        />
       </div>
       <h3 className="f3 pb4 mt0">Review</h3>
       <input
