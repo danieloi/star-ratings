@@ -12,10 +12,9 @@ const URL = `${process.env.REACT_APP_URL}/reviews`;
 
 function updateRating(formerRating, clickedRating) {
   if (Math.ceil(formerRating) === clickedRating) {
-    if (formerRating === clickedRating) {
-      return clickedRating - 0.5;
+    if (formerRating !== clickedRating) {
+      return clickedRating;
     }
-    return clickedRating;
   }
   return clickedRating - 0.5;
 }
@@ -54,14 +53,14 @@ export default function AddReviewForm({ toggleIsDialogOpen }: Props) {
       <h2 id="title" className="fw7 f3 f2-ns pb4 mt0">
         What's your rating?
       </h2>
-      <h3 className="f3 pb4 mt0">Rating</h3>
+      <h3 className="f3 f2-ns pb4 mt0">Rating</h3>
       <div className="pr3 pb4">
         <StarRatingInput
           rating={rating}
           handleRatingChange={handleRatingChange}
         />
       </div>
-      <h3 className="f3 pb4 mt0">Review</h3>
+      <h3 className="f3 f2-ns pb4 mt0">Review</h3>
       <input
         type="text"
         className="db pb4 custom-gray-input w-100"
