@@ -1,4 +1,8 @@
-# Submission
+<!-- insert image in markdown here -->
+![home](./home.png)
+
+![overlay](./overlay.png)
+# A Star Ratings Exercise
 
 mvp-1 is the fullstack app with the vanilla frontend
 
@@ -11,6 +15,8 @@ live versions are here:
 [mvp-1](https://master.d3142dtarxgj25.amplifyapp.com/)
 
 [mvp-2](https://master.d1nntgscnerfyj.amplifyapp.com/)
+
+[figma mockup](https://www.figma.com/file/TJhxC8lKKsobprIHmwa3K0/Ratings-challenge-(Copy))
 
 ## Architecture
 
@@ -28,3 +34,4 @@ Improvements:
 
 - I considered a hover interaction for half star reviews.
   Based on how that would've been untenable with mobile devices, I went with taps instead.
+
