@@ -1,5 +1,7 @@
 # A Star Ratings Exercise
 
+Vanilla JS, React, TypeScript and Serverless Backend with Sockets Demo 
+
 ![home](./home.png)
 
 ![overlay](./overlay.png)
