@@ -1,8 +1,8 @@
-<!-- insert image in markdown here -->
+# A Star Ratings Exercise
+
 ![home](./home.png)
 
 ![overlay](./overlay.png)
-# A Star Ratings Exercise
 
 mvp-1 is the fullstack app with the vanilla frontend
 
